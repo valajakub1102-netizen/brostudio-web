@@ -36,6 +36,22 @@ window.BRO_ITEMS = [
       { label: "Trailer", src: null },
       { label: "Film", src: null }
     ]
+  },
+  {
+    id: "serial",
+    title: "serial",
+    category: "horror",
+    type: "Seriál",
+    poster: "pictures/idk.jpg",
+    description: "....",
+    cast: "Hrají: ",
+    videos: [
+      { label: "Teaser",    src: null },
+      { label: "Trailer", src: null },
+    ],
+    season: [
+      { label: "S1" ,episodes:[ null, null, null, null ,null , null]}
+    ]
   }
 ];
 
