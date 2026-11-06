@@ -1,0 +1,102 @@
+:root{
+  --bg:#000;
+  --text:#c2bebe;
+  --white:#fdfdfd;
+  --panel:#1e1e1e;
+  --line:#fff;
+  --font:"Segoe UI","Segoe UI Variable",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);min-height:100vh;line-height:1.5}
+a{color:inherit;text-decoration:none}
+
+/* ===== HEADER (slim) ===== */
+.site-header{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:0 40px}
+.site-header .bar{display:flex;align-items:center;gap:22px;height:64px}
+.logo{display:block;width:50px;height:50px;flex:none;border-radius:6px;overflow:hidden}
+.logo img{width:100%;height:100%;object-fit:cover;display:block}
+.site-header nav{display:flex;gap:6px;align-items:center}
+.site-header nav a{position:relative;font-size:16px;font-weight:600;letter-spacing:.12em;color:var(--text);padding:8px 14px;transition:color .2s}
+.site-header nav a::after{content:"";position:absolute;left:14px;right:14px;bottom:2px;height:2px;background:#fff;transform:scaleX(0);transform-origin:left;transition:transform .25s}
+.site-header nav a:hover,.site-header nav a.active{color:#fff}
+.site-header nav a:hover::after,.site-header nav a.active::after{transform:scaleX(1)}
+.site-header .rule{height:2px;background:linear-gradient(90deg,#fff 0,#fff 70%,rgba(255,255,255,.15));border-radius:2px}
+
+/* ===== LAYOUT ===== */
+main{max-width:1400px;margin:0 auto;padding:0 40px 100px}
+h1.hero-title{font-size:clamp(34px,5vw,60px);font-weight:700;text-align:center;margin:70px 0 56px;line-height:1.1;color:var(--text)}
+.section-title{font-size:clamp(28px,3.4vw,42px);font-weight:700;margin:56px 0 0;color:var(--text);line-height:1.1}
+.section-rule{height:3px;background:var(--line);border-radius:2px;margin:12px 0 32px;width:min(260px,100%)}
+
+/* ===== POSTER GRID ===== */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,300px));gap:24px;justify-content:start}
+.poster{position:relative;display:block;aspect-ratio:399/598;border-radius:36px;overflow:hidden;background:#111;
+  transition:transform .35s ease,box-shadow .35s ease}
+.poster img{width:100%;height:100%;object-fit:cover;display:block}
+.poster .label{position:absolute;left:0;right:0;bottom:0;padding:60px 22px 22px;font-size:28px;font-weight:700;color:#fff;
+  background:linear-gradient(transparent,rgba(0,0,0,.85));opacity:0;transition:opacity .3s}
+.poster:hover,.poster:focus-visible{transform:scale(1.04);box-shadow:0 0 34px rgba(255,255,255,.28);outline:none}
+.poster:hover .label,.poster:focus-visible .label{opacity:1}
+
+/* ===== DETAIL ===== */
+.detail{display:grid;grid-template-columns:minmax(220px,340px) 1fr;gap:56px;margin-top:56px;align-items:start}
+.detail .poster{pointer-events:none}
+.detail .poster:hover{transform:none;box-shadow:none}
+.detail h1{font-size:clamp(34px,4.6vw,60px);line-height:1.05;margin:0 0 18px;color:var(--text)}
+.detail .meta{font-size:15px;color:#8d8989;margin:0 0 18px;letter-spacing:.04em;text-transform:uppercase}
+.detail .desc{font-size:clamp(17px,1.6vw,22px);line-height:1.6;max-width:720px;margin:0}
+.detail .cast{font-size:16px;margin:18px 0 0;color:#8d8989}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.btn{position:relative;width:170px;height:56px;background:var(--panel);color:var(--white);font:inherit;font-size:20px;letter-spacing:.04em;border:0;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s}
+.btn::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:#fff}
+.btn:hover:not(:disabled){background:#2e2e2e;transform:translateY(-2px)}
+.btn.active{background:#3a3a3a}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn:focus-visible{outline:2px solid #fff;outline-offset:3px}
+
+.seasons{margin-top:44px;max-width:760px}
+.seasons h2{font-size:24px;margin:0 0 12px;color:var(--text)}
+.season-row{display:flex;align-items:center;gap:24px;padding:12px 0;border-top:2px solid #fff}
+.season-row:last-child{border-bottom:2px solid #fff}
+.season-label{flex:none;width:56px;font-size:28px;font-weight:700;color:var(--white)}
+.episodes{display:flex;flex-wrap:wrap;gap:8px}
+.ep{position:relative;width:58px;height:42px;background:var(--panel);color:var(--white);font:inherit;font-size:16px;border:0;cursor:pointer;transition:background .2s,transform .2s}
+.ep::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:#fff}
+.ep:hover:not(:disabled){background:#2e2e2e;transform:translateY(-2px)}
+.ep.active{background:#3a3a3a}
+.ep:disabled{opacity:.4;cursor:not-allowed}
+.ep:focus-visible{outline:2px solid #fff;outline-offset:2px}
+
+.player{margin-top:64px;scroll-margin-top:90px}
+.player[hidden]{display:none}
+.player-box{position:relative;width:100%;max-width:1200px;aspect-ratio:16/9;background:#0b0b0b;border-radius:20px;overflow:hidden;border:1px solid #2a2a2a}
+.player-box video{width:100%;height:100%;display:block;background:#000}
+.player-title{font-size:24px;margin:0 0 16px;color:var(--text)}
+.player-box iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+.yt-link{margin:14px 0 0;font-size:15px}
+.yt-link a{color:#8d8989;text-decoration:underline}
+.yt-link a:hover{color:#fff}
+.soon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 20px;font-size:26px;color:#8d8989}
+
+footer{padding:30px 35px 40px;text-align:center;color:#6f6b6b;font-size:16px}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width:900px){
+  .season-row{gap:14px}
+  .season-label{width:40px;font-size:22px}
+  .ep{width:50px;height:40px}
+  .site-header{padding:0 18px}
+  .site-header .bar{height:56px;gap:12px}
+  .logo{width:38px;height:38px}
+  .site-header nav a{font-size:14px;padding:8px 10px}
+  main{padding:0 18px 70px}
+  .grid{grid-template-columns:repeat(2,1fr);gap:14px}
+  .poster{border-radius:24px}
+  .poster .label{font-size:16px;padding:36px 14px 14px}
+  .detail{grid-template-columns:1fr;gap:26px;margin-top:32px}
+  .detail .poster{max-width:280px;margin:0 auto}
+  .btn{flex:1 1 calc(33% - 12px);min-width:96px;width:auto;height:52px;font-size:17px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
